@@ -1,0 +1,31 @@
+Object\functions.d(68): Error: cannot implicitly convert expression `i` of type `ulong` to `uint`
+Modules\files.d(55): Error: none of the overloads of template `std.file.read` are callable using argument types `!()(string, long)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\file.d(315):        Candidates are: `read(R)(R name, size_t upTo = size_t.max)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\file.d(341):                        `read(R)(auto ref R name, size_t upTo = size_t.max)`
+  with `R = string`
+  must satisfy the following constraint:
+`       isConvertibleToString!R`
+Modules\path.d(129): Error: undefined identifier `readLink`
+Modules\path.d(143): Error: undefined identifier `symlink`
+Modules\random.d(43): Error: cannot implicitly convert expression `pos` of type `ulong` to `uint`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2223): Error: none of the overloads of template `std.range.primitives.popFrontExactly` are callable using argument types `!()(ulong[], ulong)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\range\primitives.d(2001):        Candidate is: `popFrontExactly(Range)(ref Range r, size_t n)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2224): Error: none of the overloads of template `std.range.primitives.popFrontExactly` are callable using argument types `!()(ulong[], ulong)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\range\primitives.d(2001):        Candidate is: `popFrontExactly(Range)(ref Range r, size_t n)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2225): Error: cannot implicitly convert expression `from` of type `ulong` to `uint`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2022): Error: template instance `std.algorithm.mutation.removeStable!(ulong[], ulong)` error instantiating
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(1943):        instantiated from here: `removeImpl!(SwapStrategy.stable, ulong[], ulong)`
+Modules\random.d(45):        instantiated from here: `remove!(SwapStrategy.stable, ulong[], ulong)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2223): Error: none of the overloads of template `std.range.primitives.popFrontExactly` are callable using argument types `!()(DataType[], ulong)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\range\primitives.d(2001):        Candidate is: `popFrontExactly(Range)(ref Range r, size_t n)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2224): Error: none of the overloads of template `std.range.primitives.popFrontExactly` are callable using argument types `!()(DataType[], ulong)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\range\primitives.d(2001):        Candidate is: `popFrontExactly(Range)(ref Range r, size_t n)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2225): Error: cannot implicitly convert expression `from` of type `ulong` to `uint`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(2022): Error: template instance `std.algorithm.mutation.removeStable!(DataType[], ulong)` error instantiating
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\algorithm\mutation.d(1943):        instantiated from here: `removeImpl!(SwapStrategy.stable, DataType[], ulong)`
+Modules\random.d(46):        instantiated from here: `remove!(SwapStrategy.stable, DataType[], ulong)`
+Modules\time.d(86): Error: no property `bootTime` for type `ClockType`
+Modules\socket.d(86): Error: cannot implicitly convert expression `params[0].number2()` of type `long` to `uint`
+Modules\env.d(23): Error: cannot implicitly convert expression `i` of type `ulong` to `uint`
+Modules\net.d(39): Error: none of the overloads of template `std.net.curl.byChunk` are callable using argument types `!()(string, long)`
+C:\D\dmd2\windows\bin\..\..\src\phobos\std\net\curl.d(1413):        Candidate is: `byChunk(Conn = AutoProtocol)(const(char)[] url, size_t chunkSize = 1024, Conn conn = Conn())`

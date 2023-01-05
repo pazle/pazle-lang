@@ -1,0 +1,26 @@
+// worker's type
+defobject Workers {
+	def this(name, salary, sector){
+		self.name = name
+		self.salary = salary
+		self.sector = sector
+
+		// how the object should look on logging
+		self.repr()
+	}
+
+	def repr(){
+		self.__repr__ = self.name
+	}
+
+	def details(){
+		return [self.name, self.salary, self.sector]
+	}
+}
+
+tech = Workers('Jim', 25_000, 'Manager')
+tech.salary += 5000
+
+1 + 2;
+
+print(tech.details())

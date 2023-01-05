@@ -1,0 +1,28 @@
+Object\functions.d(68): Error: cannot implicitly convert expression `i` of type `ulong` to `uint`
+ .... 67 |   for (ulong --> unint .....
+
+
+Modules\files.d(55): Error: none of the overloads of template `std.file.read` are callable using argument types `!()(string, long)`
+ ... deleted line 54 etc ...
+
+
+Path.d 129, 143 windows does not support symlinks
+
+random.d [43, 45] windows (ulong ----> uint)
+ ... changed 36 to unint from ulong
+
+
+time.d [84] windows has no Clocktypes
+
+socket.d [86] cast long to uint `cast(uint)params[0].number2`
+
+env.d [23]  `for(ulong ---> uint ....` 
+
+
+net.d [39] cast long to `size_t`
+
+
+Conclusion
+	windows prefers uint to [long, ulong];
+	windows has no symlinks
+
