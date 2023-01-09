@@ -68,30 +68,29 @@ class Eval{
 	void next(){
 		this.pos += 1;
 
-		if (this.pos < this.ast.length){
+		if (this.pos < this.ast.length)
 			this.cur = this.ast[this.pos];
-		} else {
+		else
 			this.end = false;
-		}
 	}
 
 	DataType IntOp(string op, DataType left, DataType right){
-		if (op == "+"){
+		if (op == "+")
 			return new Number(left.number + right.number);
 		
-		} else if (op == "-"){
+		else if (op == "-")
 			return new Number(left.number - right.number);
 		
-		} else if (op == "*"){
+		else if (op == "*")
 			return new Number(left.number * right.number);
 		
-		} else if (op == "/"){
+		else if (op == "/")
 			return new Number(left.number / right.number);
 
-		} else if (op == "%"){
+		else if (op == "%")
 			return new Number(left.number % right.number);
 
-		} else if (op == "=="){
+		else if (op == "=="){
 			if (left.number == right.number)
 				return new True();
 			
@@ -134,28 +133,27 @@ class Eval{
 			return new Number(left.number-1);
 
 		} else if (op == "IN"){
-			if (find(right.__str__, left.__str__).length){
+			if (find(right.__str__, left.__str__).length)
 				return new True();
-			}
 
 			return new False();
 
 		} else if (op == "OR"){
-			if (left.capable || right.capable){
+			if (left.capable || right.capable)
 				return new True();
-			}
+			
 			return new False();
 
 		} else if (op == "AND"){
-			if (left.capable && right.capable){
+			if (left.capable && right.capable)
 				return new True();
-			}
+			
 			return new False();
 
 		} else if (op == "NOT"){
-			if (right.capable){
+			if (right.capable)
 				return new False();
-			}
+			
 			return new True();
 
 		}
@@ -263,19 +261,10 @@ class Eval{
 		DataType left = this.visit(data.leftRight[0]);
 		DataType right = this.visit(data.leftRight[1]);
 
-		if (typeid(left) == typeid(Number)){
+		if (typeid(left) == typeid(Number))
 			return IntOp(data.str, left, right);
-
-		} else if (typeid(left) == typeid(String)){
-			return StrOp(data.str, left, right);
-		
-		} else if (typeid(left) == typeid(True) || typeid(left) == typeid(False) || typeid(left) == typeid(None)){
+		else
 			return BoolOp(data.str, left, right);
-		
-		} else {
-			this.errors.traceback ~= new Locate(data.line, this.file, data.index);
-			throw new Exception("Binary operations cannot be carriedout on this DataType." ~ data.str);	
-		}
 		
 		return new DataType();
 	}
@@ -302,9 +291,8 @@ class Eval{
 	DataType DictData(Node data){
 		DataType[string] dict; 
 
-		for(int i = 0; i < data.params.length; i++){
+		for(int i = 0; i < data.params.length; i++)
 			dict[data.args[i]] = this.visit(data.params[i]);
-		}
 
 		return new Dict(dict);
 	}
@@ -323,12 +311,10 @@ class Eval{
 	}
 
 	DataType cAssign(Node data){
-		if (this.visit(data.params[0]).capable){
+		if (this.visit(data.params[0]).capable)
 			return this.visit(data.params[1]);
-
-		} else {
+		else
 			return this.visit(data.params[2]);
-		}
 
 		return new DataType();
 	}
@@ -419,7 +405,6 @@ class Eval{
 
 		if (data.exe){
 			key.attrs[data.str] = this.visit(data.expr2);
-
 			return new None();
 		}
 
@@ -496,9 +481,8 @@ class Eval{
 			if (Ans == Qn){
 				new Eval(i.params, this.hash, this.file, this.errors);
 
-				if (i.opt){
+				if (i.opt)
 					break;
-				}
 			}
 		}
 	}
@@ -530,11 +514,11 @@ class Eval{
 		string[] attrs;
 
 		foreach(Node i; data.params){
-			if (typeid(i) == typeid(FunctionNode)){
+			if (typeid(i) == typeid(FunctionNode))
 				attrs ~= i.str;
-			} else if (typeid(i) == typeid(VarNode)){
-				attrs ~= i.str;
-			}			
+
+			else if (typeid(i) == typeid(VarNode))
+				attrs ~= i.str;			
 		}
 
 		this.hash[data.str] = new Class(data.str, data.leftRight,
@@ -576,7 +560,7 @@ class Eval{
 
 		if (typeid(data.expr) == typeid(NullNode)){
 			foreach(string i, u; data.strs){
-				paths = config.check(IMPORTED_MODULES["rain"].attrs["path"], i, IMPORTED_MODULES);
+				paths = config.check(IMPORTED_MODULES["pazle"].attrs["path"], i, IMPORTED_MODULES);
 
 				if (paths.length)
 					this.hash[u] = config.act(this, paths, i, IMPORTED_MODULES);
@@ -594,7 +578,7 @@ class Eval{
 
 			foreach(string i, u; data.strs){
 				path = this.visit(data.expr).__str__ ~ "/" ~ i;
-				Module_path = config.check(IMPORTED_MODULES["rain"].attrs["path"], path, IMPORTED_MODULES);
+				Module_path = config.check(IMPORTED_MODULES["pazle"].attrs["path"], path, IMPORTED_MODULES);
 
 				if (Module_path.length)
 					this.hash[u] = config.act(this, Module_path, i, IMPORTED_MODULES);
